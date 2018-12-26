@@ -1,0 +1,46 @@
+# Project: 项目1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o input.o carcontrol.o lightcontrol.o output.o streetDraw.o mouseControl.o
+LINKOBJ  = main.o input.o carcontrol.o lightcontrol.o output.o streetDraw.o mouseControl.o
+LIBS     = -L"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -lgraphics -lgdi32 -limm32 -lmsimg32 -lole32 -loleaut32 -lwinmm -luuid -m32 -g3
+INCS     = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"E:/Dev-Cpp/MinGW64/include" -I"E:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+BIN      = 项目1.exe
+CXXFLAGS = $(CXXINCS) -m32 -g3
+CFLAGS   = $(INCS) -m32 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CC) -c main.cpp -o main.o $(CFLAGS)
+
+input.o: input.cpp
+	$(CC) -c input.cpp -o input.o $(CFLAGS)
+
+carcontrol.o: carcontrol.cpp
+	$(CC) -c carcontrol.cpp -o carcontrol.o $(CFLAGS)
+
+lightcontrol.o: lightcontrol.cpp
+	$(CC) -c lightcontrol.cpp -o lightcontrol.o $(CFLAGS)
+
+output.o: output.cpp
+	$(CC) -c output.cpp -o output.o $(CFLAGS)
+
+streetDraw.o: streetDraw.cpp
+	$(CPP) -c streetDraw.cpp -o streetDraw.o $(CXXFLAGS)
+
+mouseControl.o: mouseControl.cpp
+	$(CPP) -c mouseControl.cpp -o mouseControl.o $(CXXFLAGS)
